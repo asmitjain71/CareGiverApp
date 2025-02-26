@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "808476418164",
+    "firebase_url": "https://medicapp-f2c65-default-rtdb.firebaseio.com",
+    "project_id": "medicapp-f2c65",
+    "storage_bucket": "medicapp-f2c65.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808476418164:android:b125ea89490ca374a37121",
+        "android_client_info": {
+          "package_name": "com.example.practice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808476418164-c01b9egpn26eqn1132hihnrt85ehf3lb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzd6irbfGxhBJqbzHby5eTdSHcyFxKV5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808476418164-c01b9egpn26eqn1132hihnrt85ehf3lb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "808476418164-0ea908a6k30jv1l931etihh1oq1870bq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.practice"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
