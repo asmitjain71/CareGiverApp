@@ -29,7 +29,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String phoneNumber = '';
   String firstName = '';
   String lastName = '';
-  String city = 'Guwahati';
+  String city = 'Delhi';
   String profileImageUrl = '';
   String category = 'Dentist';
   String qualification = '';
@@ -48,7 +48,10 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register', style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w500),),
+        title: Text(
+          'Register',
+          style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w500),
+        ),
       ),
       body: _isLoading
           ? CircularProgressIndicator()
@@ -62,26 +65,28 @@ class _RegisterPageState extends State<RegisterPage> {
                       GestureDetector(
                         onTap: _pickImage, // Trigger image picker when tapped
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(100), // Make it a circle
+                          borderRadius:
+                              BorderRadius.circular(100), // Make it a circle
                           child: _imageFile != null
                               ? Image.file(
-                            File(_imageFile!.path),
-                            width: 100, // Adjust size as needed
-                            height: 100,
-                            fit: BoxFit.cover,
-                          )
+                                  File(_imageFile!.path),
+                                  width: 100, // Adjust size as needed
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                )
                               : Container(
-                            color: Color(0xffF0EFFF), // Background color for the placeholder
-                            width: 100, // Adjust size as needed
-                            height: 100,
-                            child: Center(
-                              child: Icon(
-                                Icons.add_a_photo,
-                                color: Colors.grey.shade600,
-                                size: 30, // Adjust size as needed
-                              ),
-                            ),
-                          ),
+                                  color: Color(
+                                      0xffF0EFFF), // Background color for the placeholder
+                                  width: 100, // Adjust size as needed
+                                  height: 100,
+                                  child: Center(
+                                    child: Icon(
+                                      Icons.add_a_photo,
+                                      color: Colors.grey.shade600,
+                                      size: 30, // Adjust size as needed
+                                    ),
+                                  ),
+                                ),
                         ),
                       ),
                       SizedBox(
@@ -89,24 +94,36 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Select User Type', style: GoogleFonts.poppins(fontSize: 14, color: Colors.grey),),
+                            Text(
+                              'Select User Type',
+                              style: GoogleFonts.poppins(
+                                  fontSize: 14, color: Colors.grey),
+                            ),
                             Wrap(
                               spacing: 8.0, // Spacing between chips
-                              children: ['Patient', 'Doctor'].map((String type) {
+                              children:
+                                  ['Patient', 'Doctor'].map((String type) {
                                 final isSelected = userType == type;
                                 return ChoiceChip(
                                   checkmarkColor: Colors.white,
                                   label: Text(type),
                                   selected: isSelected,
-                                  selectedColor: Color(0xff0064FA), // Background color when selected
-                                  backgroundColor: Color(0xffF0EFFF), // Background color when not selected
+                                  selectedColor: Color(
+                                      0xff0064FA), // Background color when selected
+                                  backgroundColor: Color(
+                                      0xffF0EFFF), // Background color when not selected
                                   labelStyle: GoogleFonts.poppins(
-                                    color: isSelected ? Colors.white : Color(0xff0064FA), // Text color
+                                    color: isSelected
+                                        ? Colors.white
+                                        : Color(0xff0064FA), // Text color
                                   ),
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0), // Rounded corners
+                                    borderRadius: BorderRadius.circular(
+                                        20.0), // Rounded corners
                                     side: BorderSide(
-                                      color: isSelected ? Color(0xff0064FA) : Color(0xff0064FA), // Border color
+                                      color: isSelected
+                                          ? Color(0xff0064FA)
+                                          : Color(0xff0064FA), // Border color
                                       width: 2.0, // Border width
                                     ),
                                   ),
@@ -121,19 +138,25 @@ class _RegisterPageState extends State<RegisterPage> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 16,),
+                      SizedBox(
+                        height: 16,
+                      ),
                       SizedBox(
                         height: 44,
                         child: TextFormField(
-                          style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w500),
+                          style: GoogleFonts.poppins(
+                              fontSize: 13, fontWeight: FontWeight.w500),
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Color(0xffF0EFFF),
-                            contentPadding: EdgeInsets.only(left: 10, right: 10),
+                            contentPadding:
+                                EdgeInsets.only(left: 10, right: 10),
                             labelText: 'Email',
-                            labelStyle: GoogleFonts.poppins(fontSize: 13, color: Colors.grey.shade400),
+                            labelStyle: GoogleFonts.poppins(
+                                fontSize: 13, color: Colors.grey.shade400),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0), // Rounded corners
+                              borderRadius: BorderRadius.circular(
+                                  10.0), // Rounded corners
                               borderSide: BorderSide(
                                 color: Color(0xff0064FA), // Blue border color
                                 width: 1.0, // Border width
@@ -142,34 +165,42 @@ class _RegisterPageState extends State<RegisterPage> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide(
-                                color: Color(0xff0064FA), // Blue border color when focused
+                                color: Color(
+                                    0xff0064FA), // Blue border color when focused
                                 width: 1.0, // Border width
                               ),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide(
-                                color: Color(0xff0064FA), // Blue border color when not focused
+                                color: Color(
+                                    0xff0064FA), // Blue border color when not focused
                                 width: 1.0, // Border width
                               ),
                             ),
                           ),
                           keyboardType: TextInputType.emailAddress,
                           onChanged: (val) => email = val,
-                          validator: (val) => val!.isEmpty ? 'Enter an email' : null,
+                          validator: (val) =>
+                              val!.isEmpty ? 'Enter an email' : null,
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       SizedBox(
                         height: 44,
                         child: TextFormField(
-                          style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w500),
+                          style: GoogleFonts.poppins(
+                              fontSize: 13, fontWeight: FontWeight.w500),
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Color(0xffF0EFFF),
-                            contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                            contentPadding:
+                                EdgeInsets.symmetric(horizontal: 10),
                             labelText: 'Password',
-                            labelStyle: GoogleFonts.poppins(fontSize: 13, color: Colors.grey.shade400),
+                            labelStyle: GoogleFonts.poppins(
+                                fontSize: 13, color: Colors.grey.shade400),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide(
@@ -193,7 +224,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                             suffixIcon: IconButton(
                               icon: Icon(
-                                _obscureText ? Icons.visibility_off : Icons.visibility,
+                                _obscureText
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
                                 color: Colors.grey.shade400,
                               ),
                               onPressed: () {
@@ -211,17 +244,22 @@ class _RegisterPageState extends State<RegisterPage> {
                               : null,
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       SizedBox(
                         height: 44,
                         child: TextFormField(
-                          style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w500),
+                          style: GoogleFonts.poppins(
+                              fontSize: 13, fontWeight: FontWeight.w500),
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Color(0xffF0EFFF),
-                            contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                            contentPadding:
+                                EdgeInsets.symmetric(horizontal: 10),
                             labelText: 'Phone Number',
-                            labelStyle: GoogleFonts.poppins(fontSize: 13, color: Colors.grey.shade400),
+                            labelStyle: GoogleFonts.poppins(
+                                fontSize: 13, color: Colors.grey.shade400),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide(
@@ -246,20 +284,27 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           keyboardType: TextInputType.phone,
                           onChanged: (val) => phoneNumber = val,
-                          validator: (val) => val!.isEmpty ? 'Please enter a phone number' : null,
+                          validator: (val) => val!.isEmpty
+                              ? 'Please enter a phone number'
+                              : null,
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       SizedBox(
                         height: 44,
                         child: TextFormField(
-                          style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w500),
+                          style: GoogleFonts.poppins(
+                              fontSize: 13, fontWeight: FontWeight.w500),
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Color(0xffF0EFFF),
-                            contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                            contentPadding:
+                                EdgeInsets.symmetric(horizontal: 10),
                             labelText: 'First Name',
-                            labelStyle: GoogleFonts.poppins(fontSize: 13, color: Colors.grey.shade400),
+                            labelStyle: GoogleFonts.poppins(
+                                fontSize: 13, color: Colors.grey.shade400),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide(
@@ -284,20 +329,26 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           keyboardType: TextInputType.text,
                           onChanged: (val) => firstName = val,
-                          validator: (val) => val!.isEmpty ? 'Please enter a first name' : null,
+                          validator: (val) =>
+                              val!.isEmpty ? 'Please enter a first name' : null,
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       SizedBox(
                         height: 44,
                         child: TextFormField(
-                          style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w500),
+                          style: GoogleFonts.poppins(
+                              fontSize: 13, fontWeight: FontWeight.w500),
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Color(0xffF0EFFF),
-                            contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                            contentPadding:
+                                EdgeInsets.symmetric(horizontal: 10),
                             labelText: 'Last Name',
-                            labelStyle: GoogleFonts.poppins(fontSize: 13, color: Colors.grey.shade400),
+                            labelStyle: GoogleFonts.poppins(
+                                fontSize: 13, color: Colors.grey.shade400),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide(
@@ -322,25 +373,29 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           keyboardType: TextInputType.text,
                           onChanged: (val) => lastName = val,
-                          validator: (val) => val!.isEmpty ? 'Please enter a last name' : null,
+                          validator: (val) =>
+                              val!.isEmpty ? 'Please enter a last name' : null,
                         ),
                       ),
-                      SizedBox(height: 16,),
+                      SizedBox(
+                        height: 16,
+                      ),
                       SizedBox(
                         height: 44,
                         child: DropdownButtonFormField<String>(
                           value: city,
                           items: [
+                            'Delhi',
+                            'Uttar Pradesh',
                             'Guwahati',
-                            'Tezpur',
-                            'Nagaon',
-                            'North Guwahati'
+                            'Tezpur'
                           ].map((String city) {
                             return DropdownMenuItem(
                               value: city,
                               child: Text(
                                 city,
-                                style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w500),
+                                style: GoogleFonts.poppins(
+                                    fontSize: 13, fontWeight: FontWeight.w500),
                               ),
                             );
                           }).toList(),
@@ -352,9 +407,11 @@ class _RegisterPageState extends State<RegisterPage> {
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Color(0xffF0EFFF),
-                            contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                            contentPadding:
+                                EdgeInsets.symmetric(horizontal: 10),
                             labelText: 'City',
-                            labelStyle: GoogleFonts.poppins(fontSize: 13, color: Colors.grey.shade400),
+                            labelStyle: GoogleFonts.poppins(
+                                fontSize: 13, color: Colors.grey.shade400),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide(
@@ -377,22 +434,27 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             ),
                           ),
-                          validator: (val) => val == null ? 'Select a city' : null,
+                          validator: (val) =>
+                              val == null ? 'Select a city' : null,
                         ),
                       ),
-                      SizedBox(height: 10,),
-
+                      SizedBox(
+                        height: 10,
+                      ),
                       if (userType == 'Doctor') ...[
                         SizedBox(
                           height: 44,
                           child: TextFormField(
-                            style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w500),
+                            style: GoogleFonts.poppins(
+                                fontSize: 13, fontWeight: FontWeight.w500),
                             decoration: InputDecoration(
                               filled: true,
                               fillColor: Color(0xffF0EFFF),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 10),
                               labelText: 'Qualification',
-                              labelStyle: GoogleFonts.poppins(fontSize: 13, color: Colors.grey.shade400),
+                              labelStyle: GoogleFonts.poppins(
+                                  fontSize: 13, color: Colors.grey.shade400),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                                 borderSide: BorderSide(
@@ -416,10 +478,14 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             ),
                             onChanged: (val) => qualification = val,
-                            validator: (val) => val!.isEmpty ? 'Please enter a qualification' : null,
+                            validator: (val) => val!.isEmpty
+                                ? 'Please enter a qualification'
+                                : null,
                           ),
                         ),
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         SizedBox(
                           height: 44,
                           child: DropdownButtonFormField<String>(
@@ -434,7 +500,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                 value: category,
                                 child: Text(
                                   category,
-                                  style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w500),
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w500),
                                 ),
                               );
                             }).toList(),
@@ -446,9 +514,11 @@ class _RegisterPageState extends State<RegisterPage> {
                             decoration: InputDecoration(
                               filled: true,
                               fillColor: Color(0xffF0EFFF),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 10),
                               labelText: 'Category',
-                              labelStyle: GoogleFonts.poppins(fontSize: 13, color: Colors.grey.shade400),
+                              labelStyle: GoogleFonts.poppins(
+                                  fontSize: 13, color: Colors.grey.shade400),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                                 borderSide: BorderSide(
@@ -471,20 +541,26 @@ class _RegisterPageState extends State<RegisterPage> {
                                 ),
                               ),
                             ),
-                            validator: (val) => val == null ? 'Select a category' : null,
+                            validator: (val) =>
+                                val == null ? 'Select a category' : null,
                           ),
                         ),
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         SizedBox(
                           height: 44,
                           child: TextFormField(
-                            style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w500),
+                            style: GoogleFonts.poppins(
+                                fontSize: 13, fontWeight: FontWeight.w500),
                             decoration: InputDecoration(
                               filled: true,
                               fillColor: Color(0xffF0EFFF),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 10),
                               labelText: 'Year of Experience',
-                              labelStyle: GoogleFonts.poppins(fontSize: 13, color: Colors.grey.shade400),
+                              labelStyle: GoogleFonts.poppins(
+                                  fontSize: 13, color: Colors.grey.shade400),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                                 borderSide: BorderSide(
@@ -509,21 +585,28 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                             keyboardType: TextInputType.number,
                             onChanged: (val) => yearsOfExperience = val,
-                            validator: (val) => val!.isEmpty ? 'Please enter year of experience' : null,
+                            validator: (val) => val!.isEmpty
+                                ? 'Please enter year of experience'
+                                : null,
                           ),
                         ),
                       ],
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       SizedBox(
                         width: double.infinity, // Adjust width as needed
                         child: ElevatedButton(
                           onPressed: _getLocation,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xffFA9600), // Background color (blue)
+                            backgroundColor:
+                                Color(0xffFA9600), // Background color (blue)
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0), // Rounded corners
+                              borderRadius: BorderRadius.circular(
+                                  10.0), // Rounded corners
                             ),
-                            padding: EdgeInsets.symmetric(vertical: 14), // Vertical padding
+                            padding: EdgeInsets.symmetric(
+                                vertical: 14), // Vertical padding
                           ),
                           child: Text(
                             'Click to Get Current Location',
@@ -537,17 +620,22 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       if (latitude != 0.0 && longitude != 0.0)
                         Text('Location: ($latitude, $longitude)'),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       SizedBox(
                         width: double.infinity, // Adjust width as needed
                         child: ElevatedButton(
                           onPressed: _register,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xff0064FA), // Background color (blue)
+                            backgroundColor:
+                                Color(0xff0064FA), // Background color (blue)
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0), // Rounded corners
+                              borderRadius: BorderRadius.circular(
+                                  10.0), // Rounded corners
                             ),
-                            padding: EdgeInsets.symmetric(vertical: 14), // Vertical padding
+                            padding: EdgeInsets.symmetric(
+                                vertical: 14), // Vertical padding
                           ),
                           child: Text(
                             'Register',
@@ -559,7 +647,6 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ),
                       ),
-
                       SizedBox(height: 20),
                     ],
                   ),
