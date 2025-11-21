@@ -49,36 +49,74 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateToLogin() {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginPage()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => LoginPage()));
   }
 
   void _navigateToDoctorHome() {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => DoctorHomePage()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => DoctorHomePage()));
   }
 
   void _navigateToPatientHome() {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => PatientHomePage()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => PatientHomePage()));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        color: Color(0xff0064FA),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-
-              Image.asset('assets/images/login_bg.png', width: MediaQuery.of(context).size.width,),
-
-            ],
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xff0F172A), Color(0xff2563EB)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Hero(
+                  tag: 'splash-hero',
+                  child: Image.asset(
+                    'assets/images/login_bg.png',
+                    width: MediaQuery.of(context).size.width * 0.75,
+                  ),
+                ),
+                const SizedBox(height: 32),
+                Text(
+                  'Guardian Health',
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontSize: 32,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  'Personalized care for patients and seamless coordination for doctors.',
+                  style: GoogleFonts.poppins(
+                    color: Colors.white70,
+                    fontSize: 16,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 32),
+                const CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
-
 }

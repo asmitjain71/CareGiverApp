@@ -23,7 +23,6 @@ class _MedicationSchedulePageState extends State<MedicationSchedulePage> {
 
   // Selected patient id and data.
   String? _selectedPatientId;
-  Map<String, dynamic>? _selectedPatientData;
 
   // Show dialog for adding a new medication schedule for the selected patient.
   void _showAddMedicationDialog(Map<String, dynamic> currentSchedules) {
@@ -179,8 +178,6 @@ class _MedicationSchedulePageState extends State<MedicationSchedulePage> {
                   onChanged: (value) {
                     setState(() {
                       _selectedPatientId = value;
-                      _selectedPatientData =
-                          Map<String, dynamic>.from(patientsData[value]!);
                     });
                   },
                   isExpanded: true,

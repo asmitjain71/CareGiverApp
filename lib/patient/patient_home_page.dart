@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:practice/doctor/doctor_list_page.dart';
+import 'package:practice/patient/caregiver_request_page.dart';
 import 'package:practice/patient/chat_list_page.dart';
 import 'package:practice/profile_page.dart';
 
@@ -14,8 +15,9 @@ class PatientHomePage extends StatefulWidget {
 class _PatientHomePageState extends State<PatientHomePage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _children = [
+  final List<Widget> _children = const [
     DoctorListPage(),
+    CaregiverRequestPage(),
     ChatListPage(),
     ProfilePage(),
   ];
@@ -55,14 +57,20 @@ class _PatientHomePageState extends State<PatientHomePage> {
       child: Scaffold(
         body: _children.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Color(0xff0064FA),
-          unselectedItemColor: Color(0xffBEBEBE),
+          backgroundColor: const Color(0xff0F172A),
+          unselectedItemColor: const Color(0xffBEBEBE),
+          type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home_filled,
                 ),
                 label: 'Home'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.volunteer_activism,
+                ),
+                label: 'Requests'),
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.chat,

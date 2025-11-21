@@ -150,7 +150,7 @@ class _PatientProfileManagementPageState
       appBar: AppBar(
         title: Text('Manage Patient Profiles'),
       ),
-      body: StreamBuilder(
+      body: StreamBuilder<DatabaseEvent>(
         stream: patientsRef.onValue,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
@@ -159,12 +159,14 @@ class _PatientProfileManagementPageState
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           }
-          if (!snapshot.hasData ||
-              (snapshot.data! as DatabaseEvent).snapshot.value == null) {
+          if (!snapshot.hasData) {
             return Center(child: Text('No patient profiles found.'));
           }
-          final data = (snapshot.data! as DatabaseEvent).snapshot.value
-              as Map<dynamic, dynamic>;
+          final dbEvent = snapshot.data!;
+          if (dbEvent.snapshot.value == null) {
+            return Center(child: Text('No patient profiles found.'));
+          }
+          final data = dbEvent.snapshot.value as Map<dynamic, dynamic>;
           return ListView(
             children: data.entries.map((entry) {
               final patientKey = entry.key.toString();
