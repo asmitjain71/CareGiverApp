@@ -30,24 +30,25 @@ class _PatientHomePageState extends State<PatientHomePage> {
 
   Future<bool> _onWilPop() async {
     return await showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              title: Text('Are you sure?'),
-              content: Text('Do you want to exit the app?'),
-              actions: <Widget>[
-                TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop(false);
-                    },
-                    child: Text('No')),
-                TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop(true);
-                      SystemNavigator.pop();
-                    },
-                    child: Text('Yes')),
-              ],
-            ));
+            context: context,
+            builder: (context) => AlertDialog(
+                  title: const Text('Exit App'),
+                  content: const Text('Are you sure you want to exit?'),
+                  actions: <Widget>[
+                    TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop(false);
+                        },
+                        child: const Text('No')),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop(true);
+                          SystemNavigator.pop();
+                        },
+                        child: const Text('Yes')),
+                  ],
+                )) ??
+        false;
   }
 
   @override
@@ -56,35 +57,31 @@ class _PatientHomePageState extends State<PatientHomePage> {
       onWillPop: _onWilPop,
       child: Scaffold(
         body: _children.elementAt(_selectedIndex),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: const Color(0xff0F172A),
-          unselectedItemColor: const Color(0xffBEBEBE),
-          type: BottomNavigationBarType.fixed,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_filled,
-                ),
-                label: 'Home'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.volunteer_activism,
-                ),
-                label: 'Requests'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.chat,
-                ),
-                label: 'Chat'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person,
-                ),
-                label: 'Profile'),
+        bottomNavigationBar: NavigationBar(
+          selectedIndex: _selectedIndex,
+          onDestinationSelected: _onItmTapped,
+          destinations: const [
+            NavigationDestination(
+              icon: Icon(Icons.home_outlined),
+              selectedIcon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.volunteer_activism_outlined),
+              selectedIcon: Icon(Icons.volunteer_activism),
+              label: 'Requests',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.chat_bubble_outline),
+              selectedIcon: Icon(Icons.chat_bubble),
+              label: 'Chat',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.person_outline),
+              selectedIcon: Icon(Icons.person),
+              label: 'Profile',
+            ),
           ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.white,
-          onTap: _onItmTapped,
         ),
       ),
     );

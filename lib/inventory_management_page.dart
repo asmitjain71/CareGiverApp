@@ -8,6 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
+import 'package:practice/services/notification_service.dart';
 import 'model/medication_inventory.dart';
 
 class InventoryManagementPage extends StatefulWidget {
@@ -48,8 +49,19 @@ class _InventoryManagementPageState extends State<InventoryManagementPage> {
             event.snapshot.value as Map<dynamic, dynamic>;
         List<MedicationInventory> tempInventory = [];
         inventoryMap.forEach((key, value) {
-          tempInventory.add(MedicationInventory.fromMap(
-              Map<String, dynamic>.from(value), key));
+          final item = MedicationInventory.fromMap(
+              Map<String, dynamic>.from(value), key);
+          tempInventory.add(item);
+
+          // Check for low stock and notify
+          if (item.quantity < 10) {
+            NotificationService().showNotification(
+              id: item.id.hashCode,
+              title: 'Low Stock Alert',
+              body:
+                  'The stock for ${item.name} is low (${item.quantity} left).',
+            );
+          }
         });
         setState(() {
           _inventory = tempInventory;
