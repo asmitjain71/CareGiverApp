@@ -1,6 +1,8 @@
-# Comprehensive Project Report: Caregiver App - Flutter Caregiver-Patient Application
+# Project Report: Caregiver App - Flutter Caregiver-Patient Application
 
 **Project Name:** Caregiver App  
+**Developer:** Asmit Jain  
+**Guidance:** Dr. Avinash Gautam  
 **Technology Stack:** Flutter (Dart), Firebase  
 **Project Type:** Healthcare Mobile Application  
 **Date:** 29-11-25
