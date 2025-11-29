@@ -1,9 +1,9 @@
-# Comprehensive Project Report: Guardian Health - Flutter Doctor-Patient Application
+# Comprehensive Project Report: Guardian Health - Flutter Caregiver-Patient Application
 
-**Project Name:** Guardian Health  
+**Project Name:** Caregiver App  
 **Technology Stack:** Flutter (Dart), Firebase  
 **Project Type:** Healthcare Mobile Application  
-**Date:** 2024
+**Date:** 29-11-25
 
 ---
 
@@ -29,14 +29,14 @@
 
 ## Executive Summary
 
-**Guardian Health** is a comprehensive mobile healthcare application developed using Flutter framework that facilitates seamless communication and coordination between doctors and patients. The application serves as a digital healthcare platform offering features including appointment booking, real-time messaging, medication management, inventory tracking, and caregiver request systems. The project leverages Firebase as its backend infrastructure, providing real-time data synchronization, authentication, and cloud storage capabilities.
+**Guardian Health** is a comprehensive mobile healthcare application developed using Flutter framework that facilitates seamless communication and coordination between caregivers and patients. The application serves as a digital healthcare platform offering features including appointment booking, real-time messaging, medication management, inventory tracking, and caregiver request systems. The project leverages Firebase as its backend infrastructure, providing real-time data synchronization, authentication, and cloud storage capabilities.
 
 **Key Highlights:**
-- Dual-role application supporting both Doctor and Patient interfaces
+- Dual-role application supporting both Caregiver and Patient interfaces
 - Real-time messaging and appointment management
 - Comprehensive medication scheduling with notification system
 - Inventory management with low-stock alerts
-- Location-based doctor discovery
+- Location-based caregiver discovery
 - Modern Material Design 3 UI implementation
 
 ---
@@ -46,8 +46,8 @@
 ### Purpose
 
 The application addresses the need for a centralized healthcare management system that:
-- Enables patients to find and book appointments with doctors
-- Facilitates doctor-patient communication through real-time chat
+- Enables patients to find and book appointments with caregivers
+- Facilitates caregiver-patient communication through real-time chat
 - Manages medication schedules with automated reminders
 - Tracks medical inventory for healthcare facilities
 - Allows patients to request caregiver assistance
@@ -55,12 +55,12 @@ The application addresses the need for a centralized healthcare management syste
 ### Target Users
 
 1. **Patients**: Individuals seeking medical consultation and managing their healthcare needs
-2. **Doctors**: Healthcare providers managing appointments, patient records, and medication schedules
+2. **Caregivers**: Healthcare providers managing appointments, patient records, and medication schedules
 
 ### Core Value Proposition
 
 The application streamlines healthcare interactions by providing:
-- Instant doctor discovery and appointment booking
+- Instant caregiver discovery and appointment booking
 - Real-time communication channels
 - Automated medication reminders
 - Efficient inventory management
@@ -135,7 +135,7 @@ The application streamlines healthcare interactions by providing:
 
 1. **Authentication Layer**
    - Firebase Auth for user authentication
-   - Role-based routing (Doctor vs Patient)
+   - Role-based routing (Caregiver vs Patient)
    - Session persistence
 
 2. **Data Layer**
@@ -176,18 +176,18 @@ User Interaction → Widget Event Handler → Firebase Database Operation
 - Form validation
 - Password visibility toggle
 - Error handling with user-friendly dialogs
-- Automatic role detection (Doctor/Patient)
+- Automatic role detection (Caregiver/Patient)
 - Navigation to appropriate home screen
 
 **Registration Page** (`lib/auth/signup_screen.dart`)
-- Dual-role registration (Doctor/Patient)
+- Dual-role registration (Caregiver/Patient)
 - Comprehensive form with validation:
   - Email, password, phone number
   - First name, last name
   - City selection (Delhi, Uttar Pradesh, Guwahati, Tezpur)
   - Profile image upload
   - Location capture (latitude/longitude)
-- Doctor-specific fields:
+- Caregiver-specific fields:
   - Qualification
   - Category (Dentist, Cardiology, Oncology, Surgeon)
   - Years of experience
@@ -204,19 +204,19 @@ User Interaction → Widget Event Handler → Firebase Database Operation
 
 #### Patient Home Page (`lib/patient/patient_home_page.dart`)
 Bottom navigation with 4 tabs:
-1. **Home (Doctor List)**
+1. **Home (Caregiver List)**
 2. **Requests (Caregiver Requests)**
 3. **Chat**
 4. **Profile**
 
-#### Doctor Discovery & Booking
-- Browse available doctors by category
-- View doctor profiles with:
+#### Caregiver Discovery & Booking
+- Browse available caregivers by category
+- View caregiver profiles with:
   - Profile image
   - Name and category
   - City location
   - Rating information
-- Doctor detail page features:
+- Caregiver detail page features:
   - Full profile information
   - Phone call integration
   - Chat initiation
@@ -245,12 +245,12 @@ Bottom navigation with 4 tabs:
 
 #### Chat Functionality (`lib/patient/chat_list_page.dart`)
 - List of previous conversations
-- Direct messaging with doctors
+- Direct messaging with caregivers
 - Real-time message synchronization
 
-### 3. Doctor Features
+### 3. Caregiver Features
 
-#### Doctor Home Page (`lib/doctor/doctor_home_page.dart`)
+#### Caregiver Home Page (`lib/doctor/doctor_home_page.dart`)
 Bottom navigation with 6 tabs:
 1. **Home (Requests)**
 2. **Patients**
@@ -329,7 +329,7 @@ Bottom navigation with 6 tabs:
 ### 4. Real-Time Messaging (`lib/chat_screen.dart`)
 
 **Features:**
-- Bidirectional messaging (Doctor ↔ Patient)
+- Bidirectional messaging (Caregiver ↔ Patient)
 - Real-time message synchronization using Firebase streams
 - Message timestamps
 - Chat bubble design (sent vs received)
@@ -362,7 +362,7 @@ Bottom navigation with 6 tabs:
 - Shows profile picture
 - Contact information
 - Role-specific details:
-  - Doctors: Category, Qualification
+  - Caregivers: Category, Qualification
   - Patients: City, Contact info
 - Appointment history
 - Logout functionality
@@ -458,10 +458,10 @@ Bottom navigation with 6 tabs:
 
 ### Data Relationships
 
-1. **Appointments**: Patient (sender) → Doctor (receiver)
+1. **Appointments**: Patient (sender) → Caregiver (receiver)
 2. **Chats**: Bidirectional (both users maintain ChatList entry)
 3. **Medication Schedules**: Patient-specific nested structure
-4. **Inventory**: Global list accessible to all doctors
+4. **Inventory**: Global list accessible to all caregivers
 5. **Caregiver Requests**: Patient-specific with nested requests
 
 ---
@@ -475,14 +475,14 @@ Bottom navigation with 6 tabs:
    Splash Screen → Login/Register → Role Detection → Patient Home
    ```
 
-2. **Finding a Doctor**
+2. **Finding a Caregiver**
    ```
-   Home Tab → Browse Doctors → Select Category → View Details → Book Appointment
+   Home Tab → Browse Caregivers → Select Category → View Details → Book Appointment
    ```
 
 3. **Booking Appointment**
    ```
-   Doctor Details → Select Date/Time → Add Description → Submit → Status Tracking
+   Caregiver Details → Select Date/Time → Add Description → Submit → Status Tracking
    ```
 
 4. **Sending Caregiver Request**
@@ -495,16 +495,16 @@ Bottom navigation with 6 tabs:
    Requests Tab → View Medication Schedule → Select Medication → Add Note → Send Request
    ```
 
-6. **Chatting with Doctor**
+6. **Chatting with Caregiver**
    ```
    Chat Tab → Select Conversation → Send/Receive Messages
    ```
 
-### Doctor Workflow
+### Caregiver Workflow
 
 1. **Registration/Login**
    ```
-   Splash Screen → Login/Register → Role Detection → Doctor Home
+   Splash Screen → Login/Register → Role Detection → Caregiver Home
    ```
 
 2. **Managing Appointments**
@@ -658,7 +658,7 @@ dev_dependencies:
 **Key Dependency Purposes:**
 - **Firebase Suite**: Complete backend infrastructure
 - **Google Fonts**: Brand consistency and typography
-- **Location Services**: GPS-based doctor discovery
+- **Location Services**: GPS-based caregiver discovery
 - **File Handling**: Inventory import capabilities
 - **Notifications**: Medication reminders and alerts
 - **Maps Integration**: Location visualization
@@ -708,7 +708,7 @@ dev_dependencies:
    - Category filters
 
 4. **Lists & Cards**
-   - Doctor cards with profile images
+   - Caregiver cards with profile images
    - Medication cards with status badges
    - Appointment cards with status indicators
    - Request cards with color-coded status
@@ -732,7 +732,7 @@ dev_dependencies:
    - Automatic token refresh
 
 2. **Authorization**
-   - Role-based access control (Doctor vs Patient)
+   - Role-based access control (Caregiver vs Patient)
    - User ID verification for data access
    - Route protection based on authentication status
 
@@ -954,7 +954,7 @@ The **Guardian Health** application represents a comprehensive healthcare manage
 ✅ **Functional Application**: All core features are implemented and functional  
 ✅ **Modern UI/UX**: Material Design 3 implementation with consistent theming  
 ✅ **Real-time Synchronization**: Firebase Realtime Database enables live updates  
-✅ **Role-based System**: Separate interfaces for Doctors and Patients  
+✅ **Role-based System**: Separate interfaces for Caregivers and Patients  
 ✅ **Notification System**: Automated reminders and alerts  
 ✅ **Comprehensive Features**: Multiple healthcare management modules  
 
@@ -1010,15 +1010,6 @@ The codebase is well-organized, functional, and demonstrates understanding of:
 - **Flutter SDK:** 3.4.3+
 - **Dart SDK:** 3.4.3+
 - **Target Platforms:** Android, iOS
-- **Minimum Android:** Not specified (default Flutter requirements)
-- **Minimum iOS:** Not specified (default Flutter requirements)
-
----
-
-**Report Compiled By:** AI Assistant  
-**Last Updated:** 2024  
-**Report Version:** 1.0
-
 ---
 
 *This report provides a comprehensive overview of the Guardian Health Flutter application project. All information is based on codebase analysis and file structure examination.*
