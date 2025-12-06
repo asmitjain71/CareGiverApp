@@ -28,7 +28,7 @@
 
 ## Executive Summary
 
-**Guardian Health** is a comprehensive mobile healthcare application developed using Flutter framework that facilitates seamless communication and coordination between caregivers and patients. The application serves as a digital healthcare platform offering features including appointment booking, real-time messaging, medication management, inventory tracking, and caregiver request systems. The project leverages Firebase as its backend infrastructure, providing real-time data synchronization, authentication, and cloud storage capabilities.
+**CareGiver App** is a comprehensive mobile healthcare application developed using Flutter framework that facilitates seamless communication and coordination between caregivers and patients. The application serves as a digital healthcare platform offering features including appointment booking, real-time messaging, medication management, inventory tracking, and caregiver request systems. The project leverages Firebase as its backend infrastructure, providing real-time data synchronization, authentication, and cloud storage capabilities.
 
 **Key Highlights:**
 - Dual-role application supporting both Caregiver and Patient interfaces
