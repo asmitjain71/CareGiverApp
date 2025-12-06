@@ -42,7 +42,7 @@
 
 ## Project Overview
 
-### Purpose
+### Purpose -
 
 The application addresses the need for a centralized healthcare management system that:
 - Enables patients to find and book appointments with caregivers
